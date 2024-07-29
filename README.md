@@ -1,8 +1,6 @@
-![Description of Image](logo.webp)
-
-
-```markdown
 # Invoice Manager
+
+![Description of Image](logo.webp)
 
 Welcome to the Invoice Manager project! This application allows users to create, view, update, and delete invoices. It also supports exporting invoices as PDF files and exporting invoice data as an Excel file.
 
