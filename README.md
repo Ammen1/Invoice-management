@@ -1,7 +1,45 @@
-![Description of Image](logo.webp)
+It sounds like you might be experiencing issues with how your `README.md` file appears on GitHub. Here are a few common issues and solutions to ensure your `README.md` looks as intended:
 
+### 1. **Check Markdown Formatting**
+Make sure that your Markdown syntax is correct. For example, ensure there are no stray backticks, and that headers, lists, and code blocks are properly formatted.
+
+### 2. **Verify Image Path**
+Ensure that the image path in the Markdown file is correct and the image is included in your repository. If the image file (`logo.webp`) is in the same directory as your `README.md`, the path `![Description of Image](logo.webp)` should work. If the image is in a subdirectory, adjust the path accordingly.
+
+### 3. **Commit and Push the Correct File**
+Ensure that you've committed and pushed the `README.md` file and any associated image files properly. Here’s a quick guide to make sure everything is in order:
+
+1. **Stage the Changes**
+   ```bash
+   git add README.md logo.webp
+   ```
+
+2. **Commit the Changes**
+   ```bash
+   git commit -m "Update README.md with project details and add image"
+   ```
+
+3. **Push to GitHub**
+   ```bash
+   git push origin main
+   ```
+
+### 4. **View on GitHub**
+Go to your repository on GitHub and check the rendered `README.md` file. Sometimes changes might take a few moments to reflect.
+
+### 5. **Preview Locally**
+If you’re unsure how the Markdown will look on GitHub, you can use a Markdown preview tool in your code editor (like VSCode) or use a local Markdown renderer to visualize it before pushing.
+
+### 6. **Check for GitHub Specific Syntax**
+GitHub might have specific requirements or limitations. Make sure to adhere to GitHub’s [Markdown specifications](https://guides.github.com/features/mastering-markdown/) and adjust accordingly.
+
+### Example README.md Formatting
+
+Here's a cleaned-up version of your `README.md` for clarity:
 
 ```markdown
+![Description of Image](logo.webp)
+
 # Invoice Manager
 
 Welcome to the Invoice Manager project! This application allows users to create, view, update, and delete invoices. It also supports exporting invoices as PDF files and exporting invoice data as an Excel file.
@@ -60,7 +98,8 @@ Welcome to the Invoice Manager project! This application allows users to create,
    Create a `.env` file in the root directory and add the following environment variables:
 
    ```env
-   
+   DATABASE_URL=postgresql://username:password@host:port/database
+   JWT_SECRET=your_jwt_secret
    ```
 
 4. **Run the development server:**
@@ -78,21 +117,20 @@ Welcome to the Invoice Manager project! This application allows users to create,
 1. **Run Prisma migrations:**
 
    ```bash
-
+   npx prisma migrate dev
    ```
 
 2. **Generate Prisma client:**
 
    ```bash
-
+   npx prisma generate
    ```
 
 ## Usage
 
 ### Frontend
-""
-Nothing for now....
-""
+
+Currently, no specific usage instructions for the frontend.
 
 ### Backend
 
@@ -168,11 +206,10 @@ Regular commits and updates have been pushed to this repository. The user `@Amme
 
 ## Contact
 
-For any questions or clarifications, feel free to reach out to [amenguda@gmail.com](amenguda@gmail.com).
+For any questions or clarifications, feel free to reach out to [amenguda@gmail.com](mailto:amenguda@gmail.com).
 
 ---
 
 Thank you for your interest in the Invoice Manager project!
-
 ```
 
