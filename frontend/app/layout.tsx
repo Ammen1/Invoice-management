@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
-  description: "Invoice Fronted",
+  description: "Invoice Manager",
 };
 
 export default function RootLayout({
