@@ -71,17 +71,49 @@ Welcome to the Invoice Manager project! This application allows users to create,
 
    Navigate to [http://localhost:3000](http://localhost:3000) in your browser.
 
+
+## Database Schema
+
+The database schema is defined using Prisma ORM. The schema includes two main models: `User` and `Invoice`.
+
+### User Model
+
+- **id**: The unique identifier for each user.
+- **email**: The user's email, which is unique.
+- **password**: The user's password (hashed).
+- **firstName**: The user's first name (optional).
+- **lastName**: The user's last name (optional).
+- **invoices**: A list of invoices associated with the user.
+
+### Invoice Model
+
+- **id**: The unique identifier for each invoice.
+- **invoiceNumber**: The number assigned to the invoice.
+- **clientName**: The name of the client for the invoice.
+- **items**: A string representing the items included in the invoice.
+- **totalAmount**: The total amount for the invoice.
+- **dueDate**: The due date for the invoice.
+- **userId**: The ID of the user who owns the invoice.
+- **user**: The user associated with this invoice.
+
+### Prisma Schema
+
+The relationship between the `User` and `Invoice` models is a one-to-many relationship. A single user can have multiple invoices, but each invoice is associated with exactly one user.
+
+
 ### Database Setup
 
 1. **Run Prisma migrations:**
 
    ```bash
+   npx prisma migrate dev --name init
 
    ```
 
 2. **Generate Prisma client:**
 
    ```bash
+   npx prisma generate
 
    ```
 
