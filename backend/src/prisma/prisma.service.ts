@@ -1,6 +1,7 @@
-import { Injectable } from "@nestjs/common";
-import { ConfigService } from "@nestjs/config";
-import { PrismaClient } from "@prisma/client";
+/* eslint-disable prettier/prettier */
+import { Injectable } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+import { PrismaClient } from '@prisma/client';
 
 @Injectable()
 export class PrismaService extends PrismaClient {
@@ -16,6 +17,8 @@ export class PrismaService extends PrismaClient {
 
   async cleanDb() {
     // Use a transaction to ensure all deletions happen atomically
-    await this.$transaction([this.user.deleteMany()]);
+    await this.$transaction([this.user.deleteMany(),
+      this.invoice.deleteMany()
+    ]);
   }
 }
