@@ -23,8 +23,8 @@ const InvoiceForm = ({
   type = "create",
   setOpen,
 }: {
-  userId: string;
-  invoice?: any; // Consider defining a type for invoice
+  userId: any;
+  invoice?: any; 
   type: "create" | "edit";
   setOpen?: Dispatch<SetStateAction<boolean>>;
 }) => {
