@@ -2,7 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Form } from "@/components/ui/form";
@@ -12,15 +12,22 @@ import "react-datepicker/dist/react-datepicker.css";
 import "react-phone-number-input/style.css";
 import CustomFormField, { FormFieldType } from "../CustomFormField";
 import SubmitButton from "../forms/SubmitButton";
+import { useDispatch, useSelector } from "react-redux";
+// import { signupRequest } from "@/redux/authSlice";
+import { signupRequest } from "@/features/authSlice";
+import { RootState } from "@/redux/store";
 
-
-async function registerUsers(values: any) {
-  console.log("Registering user:", values);
-  return { userId: "123" };
+interface User {
+  firstname: string;
+  lastname: string;
+  email: string;
+  password: string;
 }
 
 const RegisterForm = ({ user = { firstname: '', lastname: '', email: '', password: '' } }: { user?: User }) => {
   const router = useRouter();
+  const dispatch = useDispatch();
+  const authState = useSelector((state: RootState) => state.auth);
   const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<z.infer<typeof UserFormValidation>>({
@@ -34,22 +41,21 @@ const RegisterForm = ({ user = { firstname: '', lastname: '', email: '', passwor
     },
   });
 
+  useEffect(() => {
+    if (authState.isAuthenticated) {
+      router.push(`/invoice/${authState.access_token}/new-invoice`);
+    }
+  }, [authState.isAuthenticated, authState.access_token, router]);
+
   const onSubmit = async (values: z.infer<typeof UserFormValidation>) => {
     setIsLoading(true);
-    try {
-      const response = await registerUsers(values);
-      if (response) {
-        router.push(`/invoice/${response.userId}/new-invoice`);
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    dispatch(signupRequest(values));
     setIsLoading(false);
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen  p-6">
-      <div className="w-full max-w-md p-8 space-y-8  rounded-lg shadow-md">
+    <div className="flex items-center justify-center min-h-screen p-6">
+      <div className="w-full max-w-md p-8 space-y-8 rounded-lg shadow-md">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <section className="space-y-4">
@@ -57,7 +63,6 @@ const RegisterForm = ({ user = { firstname: '', lastname: '', email: '', passwor
             </section>
 
             <section className="space-y-6">
-              {/* FIRST NAME */}
               <CustomFormField
                 fieldType={FormFieldType.INPUT}
                 control={form.control}
@@ -66,7 +71,6 @@ const RegisterForm = ({ user = { firstname: '', lastname: '', email: '', passwor
                 iconSrc="/assets/icons/user.svg"
                 iconAlt="user"
               />
-              {/* LAST NAME */}
               <CustomFormField
                 fieldType={FormFieldType.INPUT}
                 control={form.control}
@@ -75,7 +79,6 @@ const RegisterForm = ({ user = { firstname: '', lastname: '', email: '', passwor
                 iconSrc="/assets/icons/user.svg"
                 iconAlt="user"
               />
-              {/* EMAIL */}
               <CustomFormField
                 fieldType={FormFieldType.INPUT}
                 control={form.control}
@@ -84,7 +87,6 @@ const RegisterForm = ({ user = { firstname: '', lastname: '', email: '', passwor
                 iconSrc="/assets/icons/email.svg"
                 iconAlt="email"
               />
-              {/* PASSWORD */}
               <CustomFormField
                 fieldType={FormFieldType.INPUT}
                 control={form.control}
@@ -93,7 +95,6 @@ const RegisterForm = ({ user = { firstname: '', lastname: '', email: '', passwor
                 iconSrc="/assets/icons/eye.svg"
                 iconAlt="password"
               />
-              {/* PHONE */}
               <CustomFormField
                 fieldType={FormFieldType.PHONE_INPUT}
                 control={form.control}
