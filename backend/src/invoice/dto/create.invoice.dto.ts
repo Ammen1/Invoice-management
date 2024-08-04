@@ -85,10 +85,6 @@ export class CreateInvoiceDto {
   @IsString()
   companyLogoUrl?: string;
 
-  // @IsNotEmpty()
-  // @IsNumber()
-  // totalAmount: number;
-
   @IsNotEmpty()
   @IsArray()
   @ValidateNested({ each: true })
