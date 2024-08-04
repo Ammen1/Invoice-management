@@ -9,6 +9,7 @@ import { Button } from './ui/button';
 import ExcelJS from 'exceljs';
 import { useRouter } from 'next/navigation';
 import EditInvoiceForm from './EditInvoiceForm'; 
+import Image from "next/image";
 
 const InvoiceTable = () => {
   const [invoices, setInvoices] = useState<any[]>([]);
