@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import axios from 'axios';
 import { Button } from './ui/button';
