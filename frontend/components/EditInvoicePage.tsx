@@ -1,4 +1,4 @@
-"user client";
+"use client";
 
 // import { useRouter } from 'next/router';
 import InvoiceForm from './forms/InvoiceForm';
