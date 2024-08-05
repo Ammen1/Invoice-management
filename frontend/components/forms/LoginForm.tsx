@@ -11,7 +11,7 @@ import CustomFormField, { FormFieldType } from "../CustomFormField";
 import SubmitButton from "../forms/SubmitButton";
 import { useDispatch, useSelector } from "react-redux";
 import { loginRequest } from "@/features/authSlice";
-import { RootState } from "@/redux/store";
+import { RootState } from "@/store";
 
 const LoginForm = () => {
   const router = useRouter();

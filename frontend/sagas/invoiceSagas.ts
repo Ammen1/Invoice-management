@@ -21,7 +21,7 @@ import {
 } from '../features/invoiceSlice';
 
 // Base URL for the API
-const BASE_URL = 'http://localhost:4000';
+const BASE_URL = 'https://lepton-games-onboarding-assessment-1.onrender.com';
 
 // Generic API call handler
 function* apiCall(method: string, url: string, data?: unknown, token?: string) {

@@ -7,9 +7,7 @@ import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '@
 import Paginate from './ui/Paginate';
 import { Button } from './ui/button';
 import ExcelJS from 'exceljs';
-import { useRouter } from 'next/navigation';
 import EditInvoiceForm from './EditInvoiceForm'; 
-import Image from "next/image";
 
 const InvoiceTable = () => {
   const [invoices, setInvoices] = useState<any[]>([]);
@@ -21,7 +19,6 @@ const InvoiceTable = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isEditFormOpen, setIsEditFormOpen] = useState(false);
   const [editFormData, setEditFormData] = useState<any>(null);
-  const router = useRouter();
 
   useEffect(() => {
     const fetchInvoices = async () => {
@@ -29,7 +26,7 @@ const InvoiceTable = () => {
         const accessToken = localStorage.getItem('access_token');
         if (!accessToken) throw new Error('No access token found');
 
-        const response = await axios.get('http://localhost:4000/invoices', {
+        const response = await axios.get('https://lepton-games-onboarding-assessment-1.onrender.com/invoices', {
           headers: {
             Authorization: `Bearer ${accessToken}`
           }
@@ -135,7 +132,7 @@ const InvoiceTable = () => {
       const accessToken = localStorage.getItem('access_token');
       if (!accessToken) throw new Error('No access token found');
 
-      await axios.patch(`http://localhost:4000/invoices/${invoiceId}`, { status }, {
+      await axios.patch(`https://lepton-games-onboarding-assessment-1.onrender.com/invoices/${invoiceId}`, { status }, {
         headers: {
           Authorization: `Bearer ${accessToken}`
         }
@@ -154,7 +151,7 @@ const InvoiceTable = () => {
       const accessToken = localStorage.getItem('access_token');
       if (!accessToken) throw new Error('No access token found');
 
-      await axios.delete(`http://localhost:4000/invoices/${invoiceId}`, {
+      await axios.delete(`https://lepton-games-onboarding-assessment-1.onrender.com/invoices/${invoiceId}`, {
         headers: {
           Authorization: `Bearer ${accessToken}`
         }

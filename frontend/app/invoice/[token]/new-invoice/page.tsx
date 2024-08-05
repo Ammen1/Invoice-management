@@ -18,10 +18,10 @@ const InvoiceForms = () => {
 
   if (!authState.isAuthenticated) return null;
 
-  const userId = authState.userId; // or derive this from authState
-  const type = 'create'; // or 'edit' based on context
+  const userId = authState.userId;
+  const type = 'create'; 
 
-  const invoice = null; // Fetch or set the invoice details if editing
+  const invoice = null; 
 
   return (
     <div>

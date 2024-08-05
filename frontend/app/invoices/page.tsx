@@ -1,6 +1,5 @@
 "use client";
 
-
 import InvoiceTable from "@/components/InvoiceTable";
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';

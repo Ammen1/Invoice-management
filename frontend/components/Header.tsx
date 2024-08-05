@@ -17,10 +17,9 @@ const Header = () => {
   };
 
   const handleLogout = () => {
-    dispatch(logout()); // Dispatch the logout action
-    // Optionally, clear tokens or redirect to login page
-    localStorage.removeItem('access_token'); // Clear token from local storage
-    window.location.href = '/signin'; // Redirect to login page
+    dispatch(logout()); 
+    localStorage.removeItem('access_token'); 
+    window.location.href = '/signin';
   };
 
   return (
@@ -41,9 +40,6 @@ const Header = () => {
           <Link href={`/invoice/${authState.access_token}/new-invoice`} className=' text-center p-2'>
             invoice
           </Link>
-          {/* <Link href="/invoices">
-            Tables
-          </Link> */}
           {authState.isAuthenticated ? (
             <button  onClick={handleLogout} className="text-red-700 p-2">
               signout

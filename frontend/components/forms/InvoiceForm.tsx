@@ -271,8 +271,6 @@ const InvoiceForm = ({
                     label="Quantity"
                     placeholder="Quantity"
                     type="number"
-                    step="1"
-                    min="0"
                   />
                   <CustomFormField
                     fieldType={FormFieldType.INPUT}
@@ -281,8 +279,6 @@ const InvoiceForm = ({
                     label="Price"
                     placeholder="Price"
                     type="number"
-                    step="0.01"
-                    min="0"
                   />
                 </div>
               ))}

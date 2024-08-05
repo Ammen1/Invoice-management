@@ -1,6 +1,4 @@
-// app/edit/[id]/page.tsx
-
-// import EditInvoicePage from '../../../components/EditInvoicePage';
+"use client";
 import EditInvoicePage from '@/components/EditInvoicePage';
 
 export default function EditInvoice() {
