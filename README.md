@@ -57,10 +57,6 @@ Welcome to the Invoice Manager project! This application allows users to create,
 
    Create a `.env.local` file in the `frontend` directory and add the following environment variables:
 
-   ```env
-   NEXT_PUBLIC_API_URL=http://localhost:3001/api/v1
-   ```
-
 4. **Run the development server:**
 
    ```bash
@@ -70,6 +66,7 @@ Welcome to the Invoice Manager project! This application allows users to create,
 5. **Open the application:**
 
    Navigate to [http://localhost:3000](http://localhost:3000) in your browser.
+    Navigate to [https://lepton-games-onboarding-assessment-3.onrender.com](https://lepton-games-onboarding-assessment-3.onrender.com) in your browser.
 
 ### Backend Setup (Nest.js)
 
@@ -115,6 +112,7 @@ Welcome to the Invoice Manager project! This application allows users to create,
 7. **Open the backend API:**
 
    The backend API will be running at [http://localhost:4000](http://localhost:4000).
+   The backend API will be running at [https://lepton-games-onboarding-assessment-1.onrender.com](https://lepton-games-onboarding-assessment-1.onrender.com).
 
 ## Database Schema
 
