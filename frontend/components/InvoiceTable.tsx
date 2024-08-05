@@ -26,7 +26,7 @@ const InvoiceTable = () => {
         const accessToken = localStorage.getItem('access_token');
         if (!accessToken) throw new Error('No access token found');
 
-        const response = await axios.get('https://lepton-games-onboarding-assessment-1.onrender.com/invoices', {
+        const response = await axios.get('http://localhost:4000/invoices', {
           headers: {
             Authorization: `Bearer ${accessToken}`
           }
@@ -132,7 +132,7 @@ const InvoiceTable = () => {
       const accessToken = localStorage.getItem('access_token');
       if (!accessToken) throw new Error('No access token found');
 
-      await axios.patch(`https://lepton-games-onboarding-assessment-1.onrender.com/invoices/${invoiceId}`, { status }, {
+      await axios.patch(`http://localhost:4000/invoices/${invoiceId}`, { status }, {
         headers: {
           Authorization: `Bearer ${accessToken}`
         }
@@ -151,7 +151,7 @@ const InvoiceTable = () => {
       const accessToken = localStorage.getItem('access_token');
       if (!accessToken) throw new Error('No access token found');
 
-      await axios.delete(`https://lepton-games-onboarding-assessment-1.onrender.com/invoices/${invoiceId}`, {
+      await axios.delete(`cinvoices/${invoiceId}`, {
         headers: {
           Authorization: `Bearer ${accessToken}`
         }

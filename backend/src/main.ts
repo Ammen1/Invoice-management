@@ -12,7 +12,7 @@ async function bootstrap() {
 
   // Enable CORS
   app.enableCors({
-    origin: 'https://lepton-games-onboarding-assessment-3.onrender.com/',
+    origin: 'http://localhost:3000',
     credentials: true,
   });
 

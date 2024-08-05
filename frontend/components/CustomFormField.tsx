@@ -31,6 +31,14 @@ export enum FormFieldType {
   TEXT = "TEXT",
 }
 
+interface Props {
+  showTimeSelect?: boolean;
+  dateFormat?: string;
+  field: {
+    value: Date | null;
+    onChange: (date: Date | null) => void;
+  };
+}
 interface CustomProps {
   control: Control<any>;
   name: string;
@@ -147,16 +155,16 @@ const RenderInput = ({ field, props }: { field: any; props: CustomProps }) => {
             alt="user"
             className="ml-2"
           />
-         <FormControl>
-      <ReactDatePicker
-        showTimeSelect={props.showTimeSelect ?? false}
-        selected={props.field.value}
-        onChange={(date: Date | null) => props.field.onChange(date)}
-        timeInputLabel="Time:"
-        dateFormat={props.dateFormat ?? "MM/dd/yyyy"}
-        wrapperClassName="date-picker"
-      />
-    </FormControl>
+          <FormControl>
+            <ReactDatePicker
+              showTimeSelect={props.showTimeSelect ?? false}
+              selected={field.value}
+              onChange={(date: Date) => field.onChange(date)}
+              timeInputLabel="Time:"
+              dateFormat={props.dateFormat ?? "MM/dd/yyyy"}
+              wrapperClassName="date-picker"
+            />
+          </FormControl>
         </div>
       );
     case FormFieldType.SELECT:
