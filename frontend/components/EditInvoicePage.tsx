@@ -3,8 +3,9 @@
 import InvoiceForm from './forms/InvoiceForm';
 import { Invoice } from './forms/types';
 
+
 interface EditInvoicePageProps {
-  invoice: Invoice | null;
+  invoice?: Invoice; // Allow `undefined`
   userId: string;
 }
 
