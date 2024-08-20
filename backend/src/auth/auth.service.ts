@@ -1,10 +1,10 @@
-import { ForbiddenException, Injectable, Logger } from "@nestjs/common";
-import { PrismaService } from "../prisma/prisma.service";
-import { AuthDto } from "./dto";
-import * as argon from "argon2";
-import { JwtService } from "@nestjs/jwt";
-import { ConfigService } from "@nestjs/config";
-import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
+import { ForbiddenException, Injectable, Logger } from '@nestjs/common';
+import { PrismaService } from '../prisma/prisma.service';
+import { AuthDto } from './dto';
+import * as argon from 'argon2';
+import { JwtService } from '@nestjs/jwt';
+import { ConfigService } from '@nestjs/config';
+import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 
 @Injectable()
 export class AuthService {
@@ -35,11 +35,11 @@ export class AuthService {
     } catch (error) {
       if (error instanceof PrismaClientKnownRequestError) {
         // Check if the error code indicates a unique constraint violation
-        if (error.code === "P2002") {
+        if (error.code === 'P2002') {
           this.logger.error(
             `Signup failed for ${dto.email}: Credentials taken`,
           );
-          throw new ForbiddenException("Credentials taken");
+          throw new ForbiddenException('Credentials taken');
         }
       }
       this.logger.error(`Signup failed for ${dto.email}: ${error.message}`);
@@ -56,7 +56,7 @@ export class AuthService {
     // If user does not exist, throw exception
     if (!user) {
       this.logger.warn(`Signin failed for ${dto.email}: Credentials incorrect`);
-      throw new ForbiddenException("Credentials incorrect");
+      throw new ForbiddenException('Credentials incorrect');
     }
 
     // Compare password
@@ -65,7 +65,7 @@ export class AuthService {
     // If password is incorrect, throw exception
     if (!pwMatches) {
       this.logger.warn(`Signin failed for ${dto.email}: Credentials incorrect`);
-      throw new ForbiddenException("Credentials incorrect");
+      throw new ForbiddenException('Credentials incorrect');
     }
 
     this.logger.log(`User ${dto.email} signed in successfully`);
@@ -78,11 +78,11 @@ export class AuthService {
     email: string,
   ): Promise<{ access_token: string }> {
     const payload = { sub: userId, email };
-    const secret = this.config.get<string>("JWT_SECRET");
+    const secret = this.config.get<string>('JWT_SECRET');
 
     // Generate JWT token
     const token = await this.jwt.signAsync(payload, {
-      expiresIn: "1h",
+      expiresIn: '24h',
       secret: secret,
     });
 

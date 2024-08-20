@@ -1,14 +1,14 @@
-import { AuthGuard } from "@nestjs/passport";
+import { AuthGuard } from '@nestjs/passport';
 import {
   ExecutionContext,
   Injectable,
   Logger,
   UnauthorizedException,
-} from "@nestjs/common";
-import { Reflector } from "@nestjs/core";
+} from '@nestjs/common';
+import { Reflector } from '@nestjs/core';
 
 @Injectable()
-export class JwtGuard extends AuthGuard("jwt") {
+export class JwtGuard extends AuthGuard('jwt') {
   private readonly logger = new Logger(JwtGuard.name);
 
   constructor(private reflector: Reflector) {
@@ -24,7 +24,7 @@ export class JwtGuard extends AuthGuard("jwt") {
   handleRequest(err, user, info, context) {
     if (err || !user) {
       const request = context.switchToHttp().getRequest();
-      const message = err ? err.message : info ? info.message : "Unauthorized";
+      const message = err ? err.message : info ? info.message : 'Unauthorized';
       this.logger.warn(
         `Unauthorized access attempt to ${request.method} ${request.url}: ${message}`,
       );
