@@ -1,17 +1,17 @@
 "use client";
 
 import InvoiceForm from './forms/InvoiceForm';
-import { useEffect, useState } from 'react';
+import { Invoice } from './forms/types';
+interface EditInvoicePageProps {
+  invoice?: Invoice;
+  userId: string;
+}
 
-const EditInvoicePage = () => {
-  const [invoice, setInvoice] = useState(null);
-  
-
-
+const EditInvoicePage = ({ invoice, userId }: EditInvoicePageProps) => {
   return (
     <div>
       <h1>Edit Invoice</h1>
-      <InvoiceForm invoice={invoice} type="edit" />
+      <InvoiceForm invoice={invoice} userId={userId} type="edit" />
     </div>
   );
 };
