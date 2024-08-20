@@ -1,6 +1,7 @@
 "use client";
 
-import EditInvoicePage from "../../../components/EditInvoicePage"
+import EditInvoicePage from '@/components/EditInvoicePage';
 
-
-export default EditInvoicePage;
+export default function EditInvoice() {
+  return <EditInvoicePage />;
+}
