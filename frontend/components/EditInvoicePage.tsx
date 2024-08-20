@@ -4,7 +4,7 @@ import InvoiceForm from './forms/InvoiceForm';
 import { Invoice } from './forms/types';
 interface EditInvoicePageProps {
   invoice?: Invoice;
-  userId: string;
+  userId?: string;
 }
 
 const EditInvoicePage = ({ invoice, userId }: EditInvoicePageProps) => {
