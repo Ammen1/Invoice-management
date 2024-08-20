@@ -27,7 +27,7 @@ const InvoiceForms = () => {
     <div>
       <InvoiceForm
         userId={userId}
-        invoice={invoice}
+        invoice={invoice || undefined }
         type={type}
       />
     </div>
