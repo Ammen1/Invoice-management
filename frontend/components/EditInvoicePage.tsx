@@ -1,11 +1,14 @@
 "use client";
 
 import InvoiceForm from './forms/InvoiceForm';
+import { Invoice } from './forms/types';
 
-const EditInvoicePage = ({ invoice, userId }) => {
-  
+interface EditInvoicePageProps {
+  invoice: Invoice | null;
+  userId: string;
+}
 
-
+const EditInvoicePage = ({ invoice, userId }: EditInvoicePageProps) => {
   return (
     <div>
       <h1>Edit Invoice</h1>
