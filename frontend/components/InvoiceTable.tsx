@@ -35,7 +35,7 @@ const InvoiceTable = () => {
         setInvoices(response.data);
         setLoading(false);
       } catch (error) {
-        setError(error.message);
+        setError("error occor");
         setLoading(false);
       }
     };
