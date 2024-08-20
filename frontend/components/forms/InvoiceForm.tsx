@@ -16,6 +16,8 @@ import {
   addInvoiceStart,
   updateInvoiceStart,
 } from "@/features/invoiceSlice";
+import { Invoice } from "./types";
+import { z } from "zod";
 
 const InvoiceForm = ({
   userId,
@@ -24,7 +26,7 @@ const InvoiceForm = ({
   setOpen,
 }: {
   userId: any;
-  invoice?: any; 
+  invoice?: Invoice;
   type: "create" | "edit";
   setOpen?: Dispatch<SetStateAction<boolean>>;
 }) => {
