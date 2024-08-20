@@ -1,23 +1,19 @@
 "use client";
 
-import EditInvoicePage from '@/components/EditInvoicePage';
-import { useSelector } from 'react-redux';
-import { RootState } from '@/store';
+import InvoiceForm from './forms/InvoiceForm';
+import { useEffect, useState } from 'react';
 
-const EditInvoice = () => {
-  const authState = useSelector((state: RootState) => state.auth);
+const EditInvoicePage = () => {
+  const [invoice, setInvoice] = useState(null);
+  
 
-  // Assuming userId is from authState
-  const userId = authState.userId;
 
-  if (!userId) {
-    // Handle case where userId is not available
-    return <div>Loading...</div>; // Or redirect to another page
-  }
-
-  const invoice = null; // Replace with actual invoice data if available
-
-  return <EditInvoicePage userId={userId} invoice={invoice} />;
+  return (
+    <div>
+      <h1>Edit Invoice</h1>
+      <InvoiceForm invoice={invoice} type="edit" />
+    </div>
+  );
 };
 
-export default EditInvoice;
+export default EditInvoicePage;
