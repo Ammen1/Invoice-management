@@ -20,6 +20,26 @@ const InvoiceTable = () => {
   const [isEditFormOpen, setIsEditFormOpen] = useState(false);
   const [editFormData, setEditFormData] = useState<any>(null);
 
+  interface LineItem {
+    description: string;
+    quantity: number;
+    unitPrice: number;
+    totalAmount: number;
+  }
+  
+  interface Invoice {
+    id: string;
+    invoiceNumber: string;
+    issuerCompanyName: string;
+    clientCompanyName: string;
+    issueDate: string;
+    dueDate: string;
+    status: string;
+    lineItems: LineItem[];
+    companyLogoUrl?: string;
+  }
+  
+
   useEffect(() => {
     const fetchInvoices = async () => {
       try {
@@ -103,7 +123,7 @@ const InvoiceTable = () => {
       { header: 'Total Amount', key: 'totalAmount' },
     ];
 
-    invoice.lineItems.forEach(item => {
+    invoice.lineItems.forEach((item: LineItem) => {
       worksheet.addRow({
         description: item.description,
         quantity: item.quantity,
@@ -142,7 +162,7 @@ const InvoiceTable = () => {
         invoice.id === invoiceId ? { ...invoice, status } : invoice
       ));
     } catch (error) {
-      setError(error.message);
+      setError("error");
     }
   };
 
@@ -159,7 +179,7 @@ const InvoiceTable = () => {
 
       setInvoices(prev => prev.filter(invoice => invoice.id !== invoiceId));
     } catch (error) {
-      setError(error.message);
+      setError("error");
     }
   };
 
