@@ -26,7 +26,6 @@ const InvoiceTable = () => {
     unitPrice: number;
     totalAmount: number;
   }
-  
   interface Invoice {
     id: string;
     invoiceNumber: string;
@@ -37,6 +36,14 @@ const InvoiceTable = () => {
     status: string;
     lineItems: LineItem[];
     companyLogoUrl?: string;
+    issuerAddress: string;
+    issuerCity: string;
+    issuerCountry: string;
+    issuerContactName: string;
+    clientAddress: string;
+    clientCity: string;
+    clientCountry: string;
+    items: [];
   }
   
 
