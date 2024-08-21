@@ -10,15 +10,15 @@ import ExcelJS from 'exceljs';
 import EditInvoiceForm from './EditInvoiceForm'; 
 
 const InvoiceTable = () => {
-  const [invoices, setInvoices] = useState<any[]>([]);
+  const [invoices, setInvoices] = useState<Invoice[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(0);
   const [itemsPerPage] = useState(5);
-  const [selectedInvoice, setSelectedInvoice] = useState<any>(null);
+  const [selectedInvoice, setSelectedInvoice] = useState<Invoice | null>(null);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isEditFormOpen, setIsEditFormOpen] = useState(false);
-  const [editFormData, setEditFormData] = useState<any>(null);
+  const [editFormData, setEditFormData] = useState<Invoice | null>(null);
 
   interface LineItem {
     description: string;
@@ -63,7 +63,7 @@ const InvoiceTable = () => {
     fetchInvoices();
   }, []);
 
-  const handleUpdateInvoice = (invoice: any) => {
+  const handleUpdateInvoice = (invoice: Invoice) => {
     setEditFormData(invoice);
     setIsEditFormOpen(true);
   };
@@ -82,7 +82,7 @@ const InvoiceTable = () => {
     setSelectedInvoice(null);
   };
 
-  const handleExportPDF = async (invoice: any) => {
+  const handleExportPDF = async (invoice: Invoice) => {
     const pdfDoc = await PDFDocument.create();
     const page = pdfDoc.addPage([600, 800]);
     const { width, height } = page.getSize();
@@ -112,7 +112,7 @@ const InvoiceTable = () => {
     link.click();
   };
 
-  const handleExportExcel = async (invoice: any) => {
+  const handleExportExcel = async (invoice: Invoice) => {
     const workbook = new ExcelJS.Workbook();
     const worksheet = workbook.addWorksheet('Invoice');
 
